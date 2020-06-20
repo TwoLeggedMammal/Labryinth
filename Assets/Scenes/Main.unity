@@ -541,7 +541,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 752560358}
+  target2: {fileID: 456118361}
   cameraOffset: {x: 0, y: 10, z: -15}
+  zoomLevel: 10
 --- !u!81 &899827105
 AudioListener:
   m_ObjectHideFlags: 0
