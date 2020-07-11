@@ -7,6 +7,7 @@ using UnityEngine.Animations;
 public class Player : MonoBehaviour
 {
     public float speed;
+    public float jump = 30;
     float wiggleTimer = 0;
     public string upKey;
     public string downKey;
@@ -22,7 +23,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PositionOnFloor();
+        //PositionOnFloor();
         rigidbody = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -58,7 +59,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(jumpKey) && canJump)
         {
-            vel.y = speed;
+            vel.y = jump;
         }
 
         rigidbody.velocity = vel;

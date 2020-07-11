@@ -12,6 +12,9 @@ public class MazeGenerator : MonoBehaviour
 
     void Start()
     {
+        Color wallColor = new Color(0f, 0f, 0f);
+        Color startColor = new Color(0f, 1f, 0f);
+        Color endColor = new Color(1f, 0f, 0f);
         int texWidth = mazeTexture.width;
         int texHeight = mazeTexture.height;
         var floorWidth = gameObject.transform.localScale.x * 10;
@@ -25,7 +28,7 @@ public class MazeGenerator : MonoBehaviour
                 var color = mazeTexture.GetPixel(x, y);
 
                 // black means walls
-                if (color.r == 0 && color.g == 0 && color.b == 0)
+                if (color.Equals(wallColor) || color.Equals(startColor) || color.Equals(endColor))
                 {
                     var xPct = (float)x / (float)texWidth;
                     var yPct = (float)y / (float)texHeight;
@@ -44,11 +47,11 @@ public class MazeGenerator : MonoBehaviour
                 var color = mazeTexture.GetPixel(x, y);
 
                 // green means starting spot
-                if (color.r == 0 && color.g == 1.0 && color.b == 0)
+                if (color.Equals(startColor))
                 {
                     var xPct = (float)x / (float)texWidth;
                     var yPct = (float)y / (float)texHeight;
-                    var realPosition = new Vector3((floorWidth * xPct) - (floorWidth / 2), 2, (floorHeight * yPct) - (floorHeight / 2));
+                    var realPosition = new Vector3((floorWidth * xPct) - (floorWidth / 2), 20, (floorHeight * yPct) - (floorHeight / 2));
 
                     if (player1 != null)
                     {
@@ -76,11 +79,11 @@ public class MazeGenerator : MonoBehaviour
                 var color = mazeTexture.GetPixel(x, y);
 
                 // red means ending spot
-                if (color.r == 1.0 && color.g == 0.0 && color.b == 0)
+                if (color.Equals(endColor))
                 {
                     var xPct = (float)x / (float)texWidth;
                     var yPct = (float)y / (float)texHeight;
-                    var realPosition = new Vector3((floorWidth * xPct) - (floorWidth / 2), 2, (floorHeight * yPct) - (floorHeight / 2));
+                    var realPosition = new Vector3((floorWidth * xPct) - (floorWidth / 2), 15, (floorHeight * yPct) - (floorHeight / 2));
 
                     var obj = Instantiate(goalPrefab, realPosition, Quaternion.identity);
 

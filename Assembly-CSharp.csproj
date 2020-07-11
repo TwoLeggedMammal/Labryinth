@@ -67,6 +67,7 @@
     <Compile Include="Assets\Goal.cs" />
     <Compile Include="Assets\MazeGenerator.cs" />
     <Compile Include="Assets\Player.cs" />
+    <Compile Include="Assets\TextureScroll.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Code/Labryinth/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
