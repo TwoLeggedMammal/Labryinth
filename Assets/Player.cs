@@ -19,12 +19,15 @@ public class Player : MonoBehaviour
     bool left = false;
     Rigidbody rigidbody;
     bool canJump = true;
+    Transform sprite;
 
     // Start is called before the first frame update
     void Start()
     {
         //PositionOnFloor();
         rigidbody = gameObject.GetComponent<Rigidbody>();
+        //sprite = GameObject.Find("/Sprite");
+        sprite = this.transform.Find("Sprite");
     }
 
     // Update is called once per frame
@@ -60,6 +63,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(jumpKey) && canJump)
         {
             vel.y = jump;
+            canJump = false;
         }
 
         rigidbody.velocity = vel;
@@ -83,7 +87,7 @@ public class Player : MonoBehaviour
             quat = quat * Quaternion.AngleAxis(180, new Vector3(0, 1, 0));
         }
 
-        gameObject.transform.rotation = quat;
+        sprite.rotation = quat;
     }
 
     void PositionOnFloor()
@@ -104,8 +108,13 @@ public class Player : MonoBehaviour
         canJump = true;
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        canJump = true;
+    }
+
     private void OnTriggerExit(Collider other)
     {
-        canJump = false;
+        //canJump = false;
     }
 }
